@@ -359,12 +359,12 @@ function autoCenter() {
             // custom auto-center
 
             // byte 3-4 is effect strength, 0x00 to 0x0f
-            option[0] = Math.round(option[0] * 15)
+            let auto_center_strength = Math.round(option[0] * 15)
 
             // byte 5 is the rate the effect strength rises as the wheel turns, 0x00 to 0xff
-            option[1] = Math.round(option[1] * 255)
+            let auto_center_rate = Math.round(option[1] * 255)
 
-            relayOS([0xfe, 0x0d, option[0], option[0], option[1], 0x00, 0x00, 0x00])
+            relayOS([0xfe, 0x0d, auto_center_strength, auto_center_strength, auto_center_rate, 0x00, 0x00, 0x00])
         } else {
             // use default strength profile
             relayOS([0xfe, 0x0d, 0x07, 0x07, 0xff, 0x00, 0x00, 0x00])
